@@ -1,0 +1,96 @@
+{
+  "editorState": {
+    "root": {
+      "children": [
+        {
+          "children": [
+            {
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "text": "The quick brown fox jumps over the lazy dog.",
+              "type": "text",
+              "version": 1
+            }
+          ],
+          "direction": null,
+          "format": "",
+          "indent": 0,
+          "type": "extended-paragraph",
+          "version": 1,
+          "textFormat": 0,
+          "textStyle": ""
+        },
+        {
+          "children": [],
+          "direction": null,
+          "format": "",
+          "indent": 0,
+          "type": "extended-paragraph",
+          "version": 1,
+          "textFormat": 0,
+          "textStyle": ""
+        },
+        {
+          "children": [
+            {
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "text": "Stochastic Processes are random functions of time, often used to model systems that evolve unpredictably.  It is built on top of Probability theory and helps describe random evolution over time. Many stochastic processes have applications in finance, physics, and engineering. As such they are essential tools in modeling uncertainty and change. They can be classified into discrete-time and continuous-time processes, and into Markov, Poisson, and Brownian motion models.",
+              "type": "text",
+              "version": 1
+            }
+          ],
+          "direction": null,
+          "format": "",
+          "indent": 0,
+          "type": "extended-paragraph",
+          "version": 1,
+          "textFormat": 0,
+          "textStyle": ""
+        },
+        {
+          "children": [],
+          "direction": null,
+          "format": "",
+          "indent": 0,
+          "type": "extended-paragraph",
+          "version": 1,
+          "textFormat": 0,
+          "textStyle": ""
+        },
+        {
+          "children": [
+            {
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "text": " For example, they are used to model stock prices, queueing systems, and diffusion phenomena.",
+              "type": "text",
+              "version": 1
+            }
+          ],
+          "direction": null,
+          "format": "",
+          "indent": 0,
+          "type": "extended-paragraph",
+          "version": 1,
+          "textFormat": 0,
+          "textStyle": ""
+        }
+      ],
+      "direction": null,
+      "format": "",
+      "indent": 0,
+      "type": "root",
+      "version": 1
+    }
+  },
+  "lastSaved": 1783016406623,
+  "source": "AyahLab",
+  "version": "0.41.0"
+}
