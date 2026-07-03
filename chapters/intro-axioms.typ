@@ -12,42 +12,44 @@ Probability is a special case of measure space.
 
   A *$sigma$-algebra* on a set $X$ is a collection $cal(A) subset.eq cal(P)(X)$ such that // kept Typst math notation for calligraphic letters and subset relation
   - $emptyset in cal(A)$ and $X in cal(A)$,
-  - if $A in cal(A)$, then $A^c in cal(A)$,
-  - if $A_1, A_2, dots in cal(A)$, then $union.big_(i) A_i in cal(A)$. // replaced unknown `cup` with `big(cup)` for union operator
+  - if $E in cal(A)$, then $X \\ E^c in cal(A)$,
+  - if $E_1, E_2, dots in cal(A)$, then $union.big_(i=1)^infinity E_i in cal(A)$. // replaced unknown `cup` with `big(cup)` for union operator
 
   Also, $cal(P)(X)$ denotes the power set of $X$. // added definition for cal(P) as requested
 ]
 
-The study of measure theory generalizes the core idea of measuring, and at the very basic of measuring, there should be a thing or object that needs to be measured in the first place, and that thing is the $X$ above. Further, there are many ways to slice this thing, either you take the first half and then the second half to cover the full region of $X$, or you approach it with different slices either in uniform sizes or random sizes, what is important is that it should be _closed under complement_ and _countable union_, so that combining these pieces keeps you within the collection of _measurable_ sets. The union must be _countable_ (not merely finite) because probability theory rests on _countable additivity_ --- the probability of a countable union of disjoint events equals the sum of their probabilities --- and because central notions like _convergence in probability_ and _convergence in distribution_ are limits of sequences (countably many terms) of random variables.  
+The study of measure theory generalizes the core idea of measuring, and at the very basic of measuring, there should be a thing or object that needs to be measured in the first place, and that thing is the $X$ above. Further, there are many ways to slice this thing, either you take the first half and then the second half to cover the full region of $X$, or you approach it with different slices either in uniform sizes or random sizes, what is important is that it should be _closed under complement_ and _countable union_, so that combining these pieces keeps you within the collection of _measurable_ sets. The union must be _countable_ (not merely finite) because probability theory rests on _countable additivity_ --- the probability of a countable union of disjoint events equals the sum of their probabilities --- and because central notions like _convergence in probability_ and _convergence in distribution_ are limits of sequences (countably many terms) of random variables. 
 
-The fact that there are many ways for us to slice this thing into measurable pieces, it is therefore better to represent this mathematically, and $sigma$-algebra formalizes this. The prefix $sigma$ distinguishes a $sigma$-algebra from a plain _algebra (field) of sets_: both are closed under complement and finite union, but $sigma$ signals closure under countable unions.
+The fact that there are many ways for us to slice this thing into measurable pieces, it is therefore better to represent this mathematically, and $sigma$-algebra formalizes this. The prefix $sigma$ distinguishes a $sigma$-algebra from a plain _algebra (field) of sets_: both are closed under complement and finite union, but $sigma$ signals closure under countable unions. 
 
 The power set $cal(P)(X)$ is simply a collection of all subsets of $X$ and is the biggest $sigma$-algebra. Indeed, other $sigma$-algebras sit between the two extremes below.
 $
     \{emptyset, X\} subset.eq cal(A) subset.eq cal(P)(X).
 $
-Note that not every sub-collection of $cal(P)$ are $sigma$-algebra, most fail to be _closed under complement_ or _countabel union_.
+Note that not every sub-collection of $cal(P)$ are $sigma$-algebra, most fail to be _closed under complement_ or _countabel union_. 
 
 #theorem(title: "Definition")[
     _Measure Space_
     
-    A *measure space* is a triple $(X, cal(A), mu)$ where $cal(A)$ is a $sigma$-algebra on $X$ and $mu: cal(A) -> [0, infinity]$ is a measure --- meaning it satisfies just two axioms: 
+    A *measure space* is a triple $(X, cal(A), mu)$ where $cal(A)$ is a $sigma$-algebra on $X$ and $mu: cal(A) -> [0, infinity]$ is a measure
+]
+
+#theorem(title: "Definition")[
+    _Measurable Space_
+    
+    A *measurable space* is an ordered pair ($X, cal(A)$), where $X$ is a set and $cal(A)$ is a $sigma$-algebra on $X$.
+]
+    
+A measure space is therefore a space where measurement can be done, and this space should contain the object or thing to be measured, $X$; its possible measurable slices, $cal(A)$; and the tool for measuring these slices, $mu$.
+
+#theorem(title: "Definition")[
+    _Measure_
+    
+    A *measure* $mu: cal(A) -> [0, infinity]$ is a function that 
+    satisfies just two axioms: 
     - *null empty set*: $mu (emptyset) = 0 $
     - *countable additivity*: $mu (union.big_i A_i) = sum_i mu(A)$ for pairwise disjoint $A_i$.
 ]
-
-A measure space is therefore a space where measurement can be done, and this space should contain the object or thing to be measured, $X$; its possible measurable slices, $cal(A)$; and the tool for measuring these slices, $mu$. Also,
-
-#theorem(title: "Definition")[
-    _Measurable Function_
-    
-    A measurable $mu: X -> Y$ between two measurable spaces is measurable if the preimage of every measurable set is measurable:
-    $
-        mu^(-1)(B) in cal(A) " for every" B in cal(C),
-    $
-    where $cal(A)$ is the $sigma$-algebra of $X$ and $cal(B)$ is  the $sigma$-algebra of $Y$.
-]
-
 == Axioms of Probability
 A **probability space** is then nothing more than a measure space with *one extra normalization axiom bolted on* $mu(X)=1$, written below $P(Omega)=1$. 
 
@@ -59,7 +61,7 @@ A **probability space** is then nothing more than a measure space with *one extr
 
 Therefore, the probability space differs from measure space by using a probability measure $P(dot.c)$ instead which normalizes $mu$, $0 <= P(dot.c) <= 1$.
 
-#theorem(title: "Proposition")[
+#theorem(title: "Definition")[
     _Random Variable_
     
     A random variable is a measurable map
@@ -69,23 +71,13 @@ Therefore, the probability space differs from measure space by using a probabili
     where $(E, cal(E))$ is a measurable space (the _state space_, often
     $(bb(R), cal(B)(bb(R)))$). Measurable means $X^(-1)(B) in cal(F)$ for every
     $B in cal(E)$, which is exactly what is needed for "$P(X in B)$" to be defined,
-    via the pushforward law $mu(B) = P(X^(-1)(B))$. 
+    via the pushforward law $mu(B) = P(X^(-1)(B))$. A random vector
+$(X_1, dots, X_n)$ is just a measurable map into $(E^n, cal(E)^(times.o n))$
+--- finitely many random variables bundled together.
+
 ]
 
 The measure $P$ is countably additive because it makes the limits, and hence the convergence theorem, work.
-
-== The atom: a random variable
-
-A *random variable* is a measurable map
-$
-  X : (Omega, cal(F)) -> (E, cal(E)),
-$
-where $(E, cal(E))$ is a measurable space (the _state space_, often
-$(bb(R), cal(B)(bb(R)))$). Measurable means $X^(-1)(B) in cal(F)$ for every
-$B in cal(E)$, which is exactly what is needed for "$P(X in B)$" to be defined,
-via the pushforward law $mu(B) = P(X^(-1)(B))$. A random vector
-$(X_1, dots, X_n)$ is just a measurable map into $(E^n, cal(E)^(times.o n))$
---- finitely many random variables bundled together.
 
 == The object: a stochastic process
 
