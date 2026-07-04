@@ -18,6 +18,11 @@
     listing-index: (enabled: true),
 )
 
+#show heading: it => {
+  counter("theorem").update(0)  // reset theorem numbering at each new section
+  it
+}
+
 #import "theorems/thm1.typ": theorem
 
 #include "chapters/intro-axioms.typ" 

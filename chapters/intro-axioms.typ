@@ -1,15 +1,13 @@
 #import "../theorems/thm1.typ": theorem
 
 
-= Introduction
+= Introduction 
 
 A *stochastic process* is, in one sentence, a _random function_: where an ordinary random variable produces a random _point_, a stochastic process produces a random _path_. To make that precise, it is cleanest to build it up in layers, each one sitting on top of the previous. The  foundation is a *measure space*: a set equipped with a $sigma$-algebra and a measure. 
 
 == Measure Theory
 Probability is a special case of measure space. 
 #theorem(title: "Definition")[
-  *$sigma$-algebra*  // kept sigma in math mode for correct Typst rendering 
-
   A *$sigma$-algebra* on a set $X$ is a collection $cal(A) subset.eq cal(P)(X)$ such that // kept Typst math notation for calligraphic letters and subset relation
   - $emptyset in cal(A)$ and $X in cal(A)$,
   - if $E in cal(A)$, then $X \\ E^c in cal(A)$,
@@ -29,23 +27,17 @@ $
 Note that not every sub-collection of $cal(P)$ are $sigma$-algebra, most fail to be _closed under complement_ or _countabel union_. 
 
 #theorem(title: "Definition")[
-    _Measure Space_
-    
     A *measure space* is a triple $(X, cal(A), mu)$ where $cal(A)$ is a $sigma$-algebra on $X$ and $mu: cal(A) -> [0, infinity]$ is a measure
 ]
 
 #theorem(title: "Definition")[
-    _Measurable Space_
-    
     A *measurable space* is an ordered pair ($X, cal(A)$), where $X$ is a set and $cal(A)$ is a $sigma$-algebra on $X$.
 ]
     
 A measure space is therefore a space where measurement can be done, and this space should contain the object or thing to be measured, $X$; its possible measurable slices, $cal(A)$; and the tool for measuring these slices, $mu$.
 
 #theorem(title: "Definition")[
-    _Measure_
-    
-    A *measure* $mu: cal(A) -> [0, infinity]$ is a function that 
+    A *measure* $mu: cal(A) -> [0, infinity]$, where $cal(A)$ is a $sigma$-algebra, is a function that 
     satisfies just two axioms: 
     - *null empty set*: $mu (emptyset) = 0 $
     - *countable additivity*: $mu (union.big_i A_i) = sum_i mu(A)$ for pairwise disjoint $A_i$.
@@ -54,32 +46,49 @@ A measure space is therefore a space where measurement can be done, and this spa
 A **probability space** is then nothing more than a measure space with *one extra normalization axiom bolted on* $mu(X)=1$, written below $P(Omega)=1$. 
 
 #theorem(title: "Definition")[
-    _Probability Space_
-    
     A *probability space* is a measure space with triple $(Omega, cal(F), P)$, where $Omega$ is the set of outcomes, $cal(F)$ is a $sigma$-algebra of subsets of $Omega$ (the _events_ --- closed under complement and countable union, containing $Omega$), and $P : cal(F) -> [0, 1]$ is a countably additive measure with $P(Omega) = 1$. 
 ]
 
-Therefore, the probability space differs from measure space by using a probability measure $P(dot.c)$ instead which normalizes $mu$, $0 <= P(dot.c) <= 1$.
+Therefore, the probability space differs from measure space by using a probability measure $P(dot.c)$ instead, which normalizes $mu$, $0 <= P(dot.c) <= 1$. The measure $P$ is countably additive because it makes the limits, and hence the convergence theorem, work. 
+
+== Random Variable
+
+Once $(Omega, cal(F), P)$ is in place, probabilities already attach to _events_ (the measurable subsets of $Omega$), the probabilities of how likely it to happen, so the output is a _likelihood_. But we are rarely interested in a raw
+outcome $omega$ itself; we care about some _numerical quantity_ read off from
+it (a count, a sum, a waiting time). Such a quantity is captured by a function
+of the outcome, and because its input $omega$ is governed by chance the value
+varies randomly --- hence _random variable_. Requiring this function to be
+_measurable_ is what lets the probabilities on events transfer to its values,
+as formalized below.
 
 #theorem(title: "Definition")[
-    _Random Variable_
-    
-    A random variable is a measurable map
-    $
-      X : (Omega, cal(F)) -> (E, cal(E)),
-    $
-    where $(E, cal(E))$ is a measurable space (the _state space_, often
-    $(bb(R), cal(B)(bb(R)))$). Measurable means $X^(-1)(B) in cal(F)$ for every
-    $B in cal(E)$, which is exactly what is needed for "$P(X in B)$" to be defined,
-    via the pushforward law $mu(B) = P(X^(-1)(B))$. A random vector
-$(X_1, dots, X_n)$ is just a measurable map into $(E^n, cal(E)^(times.o n))$
---- finitely many random variables bundled together.
-
+  A #strong[random variable] is a measurable map
+  $
+    X : (Omega, cal(F)) -> (E, cal(E)),
+  $
+  where $(E, cal(E))$ is a measurable space (the _state space_, often
+  $(bb(R), cal(B)(bb(R)))$). Measurable means $X^(-1)(B) in cal(F)$ for every
+  $B in cal(E)$, which is exactly what is needed for $P(X in B)$ to be defined,
+  via the pushforward law $mu_X (B) = P(X^(-1)(B))$. A random vector
+  $(X_1, dots, X_n)$ is just a measurable map into
+  $(E^n, cal(E)^(times.o n))$ --- finitely many random variables bundled
+  together.
 ]
 
-The measure $P$ is countably additive because it makes the limits, and hence the convergence theorem, work.
-
-== The object: a stochastic process
+#theorem(title: "Definition")[
+  A #strong[Borel space] is a measurable map
+  $
+    X : (Omega, cal(F)) -> (E, cal(E)),
+  $
+  where $(E, cal(E))$ is a measurable space (the _state space_, often
+  $(bb(R), cal(B)(bb(R)))$). Measurable means $X^(-1)(B) in cal(F)$ for every
+  $B in cal(E)$, which is exactly what is needed for $P(X in B)$ to be defined,
+  via the pushforward law $mu_X (B) = P(X^(-1)(B))$. A random vector
+  $(X_1, dots, X_n)$ is just a measurable map into
+  $(E^n, cal(E)^(times.o n))$ --- finitely many random variables bundled
+  together.
+]
+= Stochastic Process
 
 Now index a whole family of random variables by a parameter set $T$ (think of
 $T$ as time: $bb(N)$, $bb(Z)_(>= 0)$, or $[0, infinity)$). A *stochastic
