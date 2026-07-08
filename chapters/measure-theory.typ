@@ -3,6 +3,8 @@
 
 = Measure Theory 
 
+
+This is a sample texts. 
 A *stochastic process* is, in one sentence, a _random function_: where an ordinary random variable produces a random _point_, a stochastic process produces a random _path_. To make that precise, it is cleanest to build it up in layers, each one sitting on top of the previous. The  foundation is a *measure space*: a set equipped with a $sigma$-algebra and a measure. Further
 
 == Sigma Algebra
@@ -63,23 +65,12 @@ additive, translation-invariant, and assign intervals their length. Precisely:
 
 #theorem(title: "Proposition")[
     There is no _countably additive, translation-invariant measure_
-    $lambda: cal(P)(bb(R)) -> [0, infinity]$ that assigns to intervals their length,
-    say $lambda([0, 1]) = 1$.
+    $mu: cal(P)(bb(R)) -> [0, infinity]$ that assigns to intervals their length,
+    say $mu([0, 1]) = 1$.
 ]
 
-_Proof_. Define an equivalence class $x ~ y$ with $x - y in bb(Q)$ on $[0, 1]$. From each of these equivalence classes and using the Axiom of Choice (_see_ Axiom ), pick one representative and let $V$ be the resulting set. Consider the translate $V+q, q in bb(Q) inter [0,1]$, so that
+_Proof_. Define an equivalence class $x ~ y$ with $x - y in bb(Q)$ on $[0, 1]$. From each of these equivalence classes and using the Axiom of Choice (_see_ Axiom ), pick one representative and let $V$ be the resulting set. Also
 
-$
-    V+q = \{v+q: v in V\}.
-$
-Then, 
-$
-    lambda(V+q) = lambda(V)
-$
-Further, by countable additivity, we see that
-$
-    [0,1] subset.eq union.big_(q in bb(Q) inter [-1,1]) V+q subset.eq [-1,2].
-$
 #theorem(title: "Proposition")[
     There is no _countably additive, translation-invariant measure_
     $mu: cal(P)(bb(R)) -> [0, infinity]$ that assigns to intervals their length,
