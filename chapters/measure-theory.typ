@@ -69,7 +69,7 @@ additive, translation-invariant, and assign intervals their length. Precisely:
     say $mu([0, 1]) = 1$.
 ]
 
-_Proof_. Define an equivalence class $x ~ y$ with $x - y in bb(Q)$ on $[0, 1]$. From each of these equivalence classes and using the Axiom of Choice (_see_ Axiom ), pick one representative and let $V$ be the resulting set. Also
+_Proof_. Define an equivalence class $x ~ y$ with $x - y in bb(Q)$ on $[0, 1]$. From each of these equivalence classes and using the Axiom of Choice (_see_ Axiom ), pick one representative and let $V$ be the resulting set. Also, many of the
 
 #theorem(title: "Proposition")[
     There is no _countably additive, translation-invariant measure_
