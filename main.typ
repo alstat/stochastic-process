@@ -3,9 +3,9 @@
 #set text(lang: "en")
 
 #show: ilm.with(
-    title: [Theory of Probability & Stochastic Process],
+    title: [Theory of Measure, Probability, & Stochastic Process _(Draft)_],
     author: "Al-Ahmadgaid B. Asaad",
-    date: datetime(year: 2026, month: 07, day: 02),
+    date: datetime.today(), // changed to current date dynamically
     abstract: [],
     preface: [
         #align(center + horizon)[
@@ -25,4 +25,8 @@
 
 #import "theorems/thm1.typ": theorem
 
-#include "chapters/intro-axioms.typ" 
+#include "chapters/intro.typ" 
+#include "chapters/set-theory.typ" 
+#include "chapters/measure-theory.typ" 
+#include "chapters/probability-theory.typ" 
+#include "chapters/stochastic-process.typ" 
