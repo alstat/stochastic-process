@@ -12,7 +12,7 @@
             _for the #text(lang: "ar", font: "Noto Naskh Arabic")[عمّ]_
         ]
     ],
-    bibliography: bibliography("references.bib"), // added bibliography file so citations can use reference.bib
+    bibliography: bibliography("references.bib", style: "apa"), // added bibliography file so citations can use reference.bib
     figure-index: (enabled: true),
     table-index: (enabled: true),
     listing-index: (enabled: true),
