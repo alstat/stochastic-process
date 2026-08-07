@@ -30,3 +30,4 @@
 #include "chapters/measure-theory.typ" 
 #include "chapters/probability-theory.typ" 
 #include "chapters/stochastic-process.typ" 
+#include "chapters/gf-gmrf.typ" 

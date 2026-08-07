@@ -46,10 +46,13 @@ As the width of the partitions reduces, it is therefore expected that the lower 
 #theorem(title: "Proposition")[
     Let $f:[a,b] -> bb(R)$ be a bounded function and let $P,P'$ be partitions of $[a,b]$ such that the list defining $P$ is a sublist of the list defining $P'$, then
     $
-        L(f, P', [a,b]) <= L(f, P, [a,b]) <= U(f, P', [a,b]) <= U(f, P, [a,b]).
+        L(f, P, [a,b]) <= L(f, P', [a,b]) <= U(f, P', [a,b]) <= U(f, P, [a,b]).
     $
 ]
-_Proof_. Let 
+_Proof_. Let $P := \{x_0, x_1, dots , x_n\}$ and $P' := \{x_0^', x_1^', dots, x_n^'\}$, then for some $j$, $x_j^'=x_i < x_(i+1) < dots < x_(i+n) = x_(j+1)^'$. Then, 
+$
+     L(f, P, [a,b]) = sum_(j=1)^n (x_j - x_(j-1)) inf_(x_(j-1), x_j) f
+$
 
 == Sigma Algebra
 A *stochastic process* is, in one sentence, a _random function_: where an ordinary random variable produces a random _point_, a stochastic process produces a random _path_. To make that precise, it is cleanest to build it up in layers, each one sitting on top of the previous. The  foundation is a *measure space*: a set equipped with a $sigma$-algebra and a measure. Further
